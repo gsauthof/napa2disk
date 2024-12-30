@@ -1,0 +1,18 @@
+[Unit]
+Description=Logging Napatech Events
+After=ntservice.service
+Requisite=ntservice.service
+PartOf=ntservice.service
+
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/nt_event_logger
+ExecStart=/opt/napa2disk/bin/nt_event_logger -D $nt_event_logger_flags
+
+User=juser
+Group=juser
+
+
+[Install]
+WantedBy=multi-user.target

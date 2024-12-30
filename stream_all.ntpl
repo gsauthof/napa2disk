@@ -1,0 +1,7 @@
+#!/opt/napatech3/bin/ntpl -f
+
+# i.e. create 4 streams, for each port a separate one
+Assign[streamid=0]=port==0
+Assign[streamid=1]=port==1
+Assign[streamid=2]=port==2
+Assign[streamid=3]=port==3

@@ -1,0 +1,19 @@
+[Unit]
+Description=Napa2disk post-rotate command execution service
+
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/n2d_spawner
+ExecStart=/opt/napa2disk/bin/n2d_spawner -D $n2d_spawner_flags
+
+User=juser
+Group=juser
+
+# create /run/napa2disk for Unix domain socket
+RuntimeDirectory=napa2disk
+RuntimeDirectoryMode=0750
+
+
+[Install]
+WantedBy=multi-user.target

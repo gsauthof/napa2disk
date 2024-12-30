@@ -1,0 +1,21 @@
+[Unit]
+Description=Transmit LLDP Frames on Napatech ports
+After=ntservice.service
+Requisite=ntservice.service
+PartOf=ntservice.service
+
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/nt_beacon
+ExecStart=/opt/napa2disk/bin/nt_beacon -D $nt_beacon_flags
+
+User=juser
+Group=juser
+
+Restart=on-failure
+RestartSec=61
+
+
+[Install]
+WantedBy=multi-user.target

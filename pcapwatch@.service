@@ -1,0 +1,15 @@
+[Unit]
+Description=Periodically remove /mnt/port%I files
+After=ntservice.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/pcapwatch@%I
+ExecStart=/opt/napa2disk/bin/pcapwatch /mnt/port%i '/mnt/port%i/*.pcap' $pw_flags -v
+WorkingDirectory=/mnt/port%i
+
+User=juser
+Group=juser
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+[Unit]
+Description=Capture Napatech port %I to /mnt/port%I
+After=ntservice.service
+Requisite=ntservice.service
+PartOf=ntservice.service
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/napa2disk@%I
+ExecStart=/opt/napa2disk/bin/napa2disk -s %i -C 8 -D $n2d_flags
+WorkingDirectory=/mnt/port%i
+
+User=juser
+Group=juser
+
+# TODO watchdog
+
+Restart=on-failure
+RestartSec=61
+
+
+[Install]
+WantedBy=multi-user.target

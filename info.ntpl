@@ -1,0 +1,4 @@
+#!/opt/napatech3/bin/ntpl -f
+
+FilterInfo[Type=Info]=All
+FilterInfo[Type=Details]=All
